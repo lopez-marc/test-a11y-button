@@ -5,21 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Test A11y Button</title>
     <style>
-      .gradient-button {
-        background: radial-gradient(circle, rgba(8,166,50,1) 0%, rgba(9,170,49,1) 35%, rgba(0,137,61,1) 82%);
-        color: white;
+      /* Base styles for all buttons */
+      .button {
         border: none;
-        padding: 10px 20px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        border-radius: 5px;
+        border-radius: 9999px; /* equivalent to rounded-full */
+        padding: 0.5rem 2rem; /* default padding, adjusted per size below */
+        font-weight: bold;
+        letter-spacing: 0.05em;
+        line-height: 120%;
+        transition: color 0.15s ease-in-out;
         cursor: pointer;
+        outline: none;
+        position: relative; /* for z-index */
+        background: radial-gradient(circle, rgba(8,166,50,1) 0%, rgba(9,170,49,1) 35%, rgba(0,137,61,1) 82%);
+        color: white; /* text color for primary buttons */
+      }
+
+      /* Size adjustments */
+      .button.sm { padding: 0.5rem 2rem; font-size: 1rem; }
+      .button.md { padding: 0.625rem 2rem; font-size: 1.125rem; }
+      .button.lg { padding: 0.75rem 2rem; font-size: 1.25rem; }
+
+      /* Hover, focus, and active states */
+      .button:hover, .button:focus, .button:active {
+        background-color: #097441; /* darker green for interactions */
+      }
+      .button:focus {
+        box-shadow: 0 0 0 4px rgba(9, 116, 65, 0.2); /* focus ring */
+        z-index: 10;
+      }
+      .button:active {
+        box-shadow: 0 0 0 4px rgba(9, 116, 65, 0.2); /* active ring */
+      }
+
+      /* Disabled state */
+      .button:disabled {
+        background-color: rgba(8,166,50,0.3); /* lighter green for disabled state */
+        cursor: default;
+        pointer-events: none;
       }
     </style>
   </head>
   <body>
-    <button class="gradient-button">Click me!</button>
+    <button class="button lg">Button-Text</button>
+    <button class="button md">Button-Text</button>
+    <button class="button sm">Button-Text</button>
   </body>
 </html>
